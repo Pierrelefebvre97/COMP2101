@@ -22,7 +22,8 @@ echo ""
 
 echo "12 largest files"
 echo "================"
-find / -type f -printf | sort -k 7 -r -h | head -12
+find / -type f -exec ls -lh {} + 2>/dev/null| sort -k 7 -n | head -12 | awk '{print $1, $3, $5}'
+
 echo ""
 
 
