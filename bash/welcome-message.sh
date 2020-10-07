@@ -35,7 +35,7 @@ then
 
 elif [ $day == "Tuesday" ]
 then
-  title="Tuesday i was through with hopin"
+  title="Tuesday I was through with hopin"
 
 elif [ $day == "Wednesday" ]
 then
