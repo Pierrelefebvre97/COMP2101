@@ -80,7 +80,8 @@ LANAddress=$(ip a s $interfaceName |awk '/inet /{gsub(/\/.*/,"");print $2}')
 LANHost=$(getent hosts $LANAddress| awk '{print $2}')
 EXIP=$(curl -s icanhazip.com)
 EXName=$(getent hosts $EXIP | awk '{print $2}')
-
+RouterAddress=$(ip r | grep "^default" | awk '{print $3}')
+RouterName=$(getent hosts $RouterAddress | awk '{print $2}')
 
 cat <<EOF
 Hostname        : $Hostname
@@ -88,4 +89,6 @@ LAN Address     : $LANAddress
 LAN Hostname    : $LANHost
 External IP     : $EXIP
 External Name   : $EXName
+Router Address  : $RouterAddress
+Router Name     : $RouterName
 EOF
